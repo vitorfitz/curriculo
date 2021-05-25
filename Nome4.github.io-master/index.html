@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Under Tail</title>
+    <link rel="stylesheet" href="css.css">
+    <script>
+    function imgLoadFail(thiz){
+      let pai=thiz.parentNode;
+      thiz.remove();
+      let novo=document.createElement("pre");
+      pai.appendChild(novo);
+      novo.innerHTML="\
+                                   `-----`\n\
+                                `:+/-----/++++++/``\n\
+                               .s-       -   ````//++-\n\
+                              `y.        -y...      .o-\n\
+                             -y`          /NNhys.:   /o\n\
+                            -s..         .mNhsyyso   /o\n\
+                           .hsy-        `ym+syhNNh  `o/\n\
+                            .`d         /Nm/::+oyd  :s\n\
+                             ++       .sNMMm+s/yho `h`\n\
+                            -s.     .sNMmdMMNm:yy .s-\n\
+                           -s`  ..:/hMNNddNdNN:o- ++\n\
+                           /o+++:o-`sMhossosNm-: -`s/\n\
+                            ```` .y-:omNhyNNy-`.:o/+y\n\
+            `//+sss+++++ssssss+//-://:.oyyy-.::+::/+oosssso++++osso//:\n\
+             ...:::+++::/:::://..+d+. `````` `:yh-.-+:::://:/++/::-..`\n\
+                     y/oo+-     `s+/////////////s:     `:+++`\n\
+                     h:s.os+.  `o:--/..    .:`/-.o-   /+-s:y\n\
+                    :s+/.`/++- +/./:-/:.  /dd`hm+.y`.:s`./+s-\n\
+                    o+y-/hh``:+y:.+/-+/-  +mNhNNo h+/.dy/:yo+\n\
+                   -yo- .y-   `:+-..:.-    -oo+-.:+.  -y. :oy-\n\
+                   y++-.s:      `:o.++osooss++-:o.     /o.-++y`\n\
+                  o+o/:oo`        +om-dmmhmmo+ss.      `so:++o+\n\
+                 :d// +s.       `-/om`+dMMNy-+sy.`      .s/ ++h-\n\
+                .so/+sh`       -/:+om```+y-``oos./:`     .hs+/so`\n\
+               -s/+`:s.     `-+-` ``+//:--://+-   .+:`    .s-.//o-\n\
+     ````    -/s//+y+.     -+:`       ``::-`        -/:`   .+y+//s:-    ````\n\
+    /hdmds//o+s+`./+     -/:                          .+:`   +/..+s+o//smmhy:\n\
+    `-oddmMdsho++:`    -+:`       ````------`````       -/:`  .:++shsmMmddo-`\n\
+   .+sdmmNNd+/`      -/:`    `..://///:-----/////:-..     -/:`    `/+mMNmmds+`\n\
+ `+shhhNmo:`       `/+`    ./oso.`               ./so/-`    :+.      `:sNNhdys+`\n\
+ `osymms.        `/+.    .//.`                       .:+-    `/+.       .smmyoo`\n\
+  ``--.        `:/:/:...++`                            `:o-..://:/.       .-..`\n\
+             `/+.  `.//+y+                              -yo//-`  `:+.\n\
+           `:/.      `:/-                                `//.      `:+.\n\
+         `/+.      `:+.                                    `//.      `//.\n\
+       `:/.       :+-                                        `/+       `/+.\n\
+     `/+.      `` o/                                          `d ``      `//.\n\
+   `:+.       :od.o:                                          `h.yo+       `/+.\n\
+ `/+-`````-////.-/.                                            `//`:+//:`````.++.\n\
+ :+////////```                                                      ```-///////+/  ";
+      novo.style.cssText=
+        "font-size:4.9rem;";
+    }
+    </script>
+  </head>
+  <body>
+    <div id="menu">
+      <header>
+        <h1>Cópia barata de<img src="https://mbtskoudsalg.com/images/undertale-logo-png-3.png" alt="Undertale" id="logo"></h1>
+        <h2>Luta contra Mettaton Neo</h2>
+      </header>
+      <nav id="botoesMenu">
+        <div>
+          <button>Novo jogo</button>
+          <button>Continuar jogo
+            <!-- Por que diabos é considerado inválido colocar um DIV dentro de um botão?!? Funcionou então vai ficar assim mesmo, dane-se. -->
+            <div class="tooltip left">
+              <div>
+                <dl id="ttSave"></dl>
+                <span class="tri"></span>
+              </div>
+            </div>
+          </button>
+          <button>Tutorial</button>
+          <button>Treinamento</button>
+        </div>
+        <div>
+          <button id="dif">Dificuldade
+            <div class="tooltip right">
+              <div id="conteudoDif">
+                <div>
+                  😴<div class="meter" data-start="0.5">
+                    <div class="slider"></div>
+                    <div class="track"></div>
+                  </div>☠️
+                </div>
+                <p>A dificuldade aumenta a velocidade das fases.</p>
+                <span class="tri"></span>
+              </div>
+            </div>
+          </button>
+          <button>Controles</button>
+          <button>Itens</button>
+          <button disabled>Em breve</button>
+        </div>
+      </nav>
+      <div class="modal">
+        <section id="treino">
+          <h2>Escolha uma fase</h2>
+          <ol id="fases" class="p"></ol>
+          <h3>Velocidade</h3>
+          <div class="p">
+            Normal<div class="meter" data-start="0">
+              <div class="slider"></div>
+              <div class="track"></div>
+            </div>Alta
+          </div>
+          <p>A partir de quando as fases começam a repetir, a velocidade vai aumentando.</p>
+        </section>
+      </div>
+      <div class="modal">
+        <section class="largPadrao" id="controles">
+          <h2>Controles</h2>
+          <dl>
+            <div>
+              <dt>Z</dt>
+              <dd>Seleciona uma opção no menu, prossegue a fala do oponente, ou, na ação Fight, executa um ataque.</dd>
+            </div>
+            <div>
+              <dt>X</dt>
+              <dd>Sai da opção escolhida no menu, ou pula a animação da fala.</dd>
+            </div>
+            <div>
+              <dt>Setinhas</dt>
+              <dd>Navegar pelo menu e se mover para desviar dos ataques.</dd>
+            </div>
+            <div>
+              <dt>Esc</dt>
+              <dd>Sai do jogo.</dd>
+            </div>
+            <div>
+              <dt>F12 (ou Fn+F12)</dt>
+              <dd>Abre o Menu Hacker!</dd>
+            </div>
+          </dl>
+          <h3>Regras das cores</h3>
+          <dl>
+            <div>
+              <dt class="txAzul">Azul</dt>
+              <dd>Pare!</dd>
+            </div>
+            <div>
+              <dt class="txLaranja">Laranja</dt>
+              <dd>Ande!</dd>
+            </div>
+            <div>
+              <dt>Branco</dt>
+              <dd>Desvie!</dd>
+            </div>
+          </dl>
+        </section>
+      </div>
+      <div class="modal">
+        <section style="width:666rem" id="itens">
+          <table>
+            <tr>
+              <td>
+                <h3>Seus stats</h3>
+                <dl>
+                  <div>
+                    <dt>Ataque</dt>
+                    <dd id="ddAtk">5</dd>
+                  </div>
+                  <div>
+                    <dt>Defesa</dt>
+                    <dd id="ddDef">5</dd>
+                  </div>
+                </dl>
+              </td>
+              <td id="inventario">
+                <h3>Inventário</h3>
+                <ul class="itens cols2" id="seus"></ul>
+              </td>
+              <td id="equips">
+                <h3>Equipamentos</h3>
+                <dl class="itens">
+                  <div>
+                    <dt>Defesa</dt>
+                    <dd></dd>
+                  </div>
+                  <div>
+                    <dt>Arma</dt>
+                    <dd></dd>
+                  </div>
+                </dl>
+              </td>
+            </tr>
+            <tr>
+              <td id="info">
+                <div id="aneInv">
+                  <p>Clique em um item para ver sua descrição.</p>
+                  <p>Arraste os itens que você desejar até os campos "inventário" e "equipamentos".</p>
+                </div>
+                <div id="descAtual" class="oculto">
+                  <h3>teste</h3>
+                  <p>lorem ipsulon</p>
+                </div>
+              </td>
+              <td colspan="2" id="inv">
+                <h3>Itens não equipados</h3>
+                <h4>Consumíveis</h4>
+                <ul id="cons" class="itens cols4"></ul>
+                <h4>Defesa</h4>
+                <ul id="def" class="itens cols4"></ul>
+                <h4>Ataque</h4>
+                <ul id="atk" class="itens cols4"></ul>
+              </td>
+            </tr>
+          </table>
+        </section>
+      </div>
+    </div>
+    <div id="app" class="oculto">
+      <button id="close" class="fechar"></button>
+      <figure id="oponente">
+        <div id="barraOpon" class="pseudoOculto">
+          <div id="vidaOpon"></div>
+        </div>
+        <div id="imgOpon">
+          <img src="boss.gif" onerror='imgLoadFail(this)'>
+          <img src="Toriel.png">
+          <img src="TorielBrava.png">
+          <img src="boneco.gif">
+        </div>
+        <div id="balao" class="oculto"></div>
+      </figure>
+      <div id="jogo-wrapper">
+        <div id="jogo">
+          <div id="batalha" class="hasHeart">
+            <div id="coracao" class="coracao">
+              <div class="arredondador"></div>
+              <div class="arredondador"></div>
+            </div>
+            <div id="obstaculos"></div>
+            <div id="ff"> x<span id="multFF">1.0</span></div>
+          </div>
+          <div id="fight" class="tx">
+            <div id="barraAtk">
+              <div id="grid">
+                <div class="preRuim"></div>
+                <div class="ruim"></div>
+                <div class="preMedio"></div>
+                <div class="medio"></div>
+                <div class="preBom"></div>
+                <div class="bom"></div>
+                <div class="meio"></div>
+                <div class="bom"></div>
+                <div class="preBom"></div>
+                <div class="medio"></div>
+                <div class="preMedio"></div>
+                <div class="ruim"></div>
+                <div class="preRuim"></div>
+              </div>
+              <div id="tiros"></div>
+            </div>
+          </div>
+          <div id="act" class="tx">
+            <ul>
+              <li>Check</li>
+            </ul>
+          </div>
+          <div id="item" class="tx">
+            <ul class="dlpl">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            <p id="bobocabo" class="oculto">Você não tem itens ;-;</p>
+          </div>
+          <div id="mercy" class="tx">
+            <ul>
+              <li>Spare</li>
+            </ul>
+          </div>
+          <div id="ane" class="visivel tx"></div>
+          <div id="itemUsado" class="tx">
+            <p id="voceComeu"></p>
+            <p id="hpRestaurado"></p>
+            <p id="extra"></p>
+          </div>
+          <div id="checkMsg" class="tx">
+            <div id="checkMetta">
+              <p>Mettaton NEO - 90 ATK 9 DEF</p>
+              <p>Otimizado para ataque, mas com defesa e bateria ineficientes.</p>
+              <p>Sua bateria está em <span id="bateria">95</span>%.</p>
+            </div>
+            <div id="checkDummy">
+              <p>DUMMY - 0 ATK 3 DEF</p>
+              <p>É um boneco.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="hp">
+        HP
+        <div id="barra">
+          <div id="vida"></div>
+        </div>
+        <span id="vidaAtual">20</span>/<span id="vidaMax">20</span>
+      </div>
+      <nav id="botoes">
+        <button data-div="fight">FIGHT</button>
+        <button data-div="act">ACT</button>
+        <button data-div="item">ITEM</button>
+        <button data-div="mercy">MERCY</button>
+      </nav>
+    </div>
+    <script src="js.js"></script>
+  </body>
+</html>
