@@ -1,0 +1,371 @@
+/* Gerais */
+
+*{
+  padding:0;
+  margin:0;
+  border:0;
+}
+button{
+  padding: 2px 4px;
+  background-color: #efefef;
+  border:1px solid #9f9f9f;
+  font-size: 16px;
+  margin-top:12px;
+}
+button:first-child{
+  margin-top: 0;
+}
+button:not([disabled]){
+  cursor: pointer;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+.oculto{
+  display: none !important;
+}
+
+
+/* Loja */
+
+#pregame{
+  display: flex;
+  height:585px;
+}
+#loja{
+  width: 280px;
+  padding-right: 24px;
+  list-style: none;
+  border-right: 1px solid #bfbfbf;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#loja img{
+  height:60px;
+  width:60px;
+  margin-right:16px;
+}
+#loja h2{
+  margin-bottom: 4px;
+}
+.desc{
+  padding-top:8px;
+}
+.interno{
+  --cor:#efefef;
+  background-color: var(--cor);
+  border: 12px solid var(--cor);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: height 200ms linear;
+}
+.interno:hover{
+  --cor:#dfdfdf;
+}
+.liMenu:not(:hover){
+  height: 60px !important;
+}
+#loja li{
+  height:84px;
+  position: relative;
+}
+#loja li:not(:last-child){
+  margin-bottom:12px;
+}
+h2{
+  font-size: 20px;
+}
+
+
+/* Dinheiro e seu exército */
+
+#monih2{
+  color: #439649;
+}
+#preside{
+  display: flex;
+  flex-direction: column;
+  padding:20px 0;
+  width:200px;
+}
+#preside>*{
+  padding-left: 24px;
+  padding-right: 12px;
+}
+#preside>:not(:last-child){
+  padding-bottom: 20px;
+  border-bottom: 1px solid #bfbfbf;
+}
+#preside>:not(:first-child){
+  padding-top: 20px;
+}
+
+#seuExercito{
+  flex: 1 1 0;
+}
+.exercito>p{
+  margin-top:8px;
+}
+.imgsExercito{
+  margin-top:14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.imgsExercito>div{
+  display: flex;
+  align-items: center;
+}
+.imgsExercito img{
+  height:30px;
+  width:30px;
+  margin-right:4px;
+}
+.imgsExercito>:not(:last-child){
+  margin-bottom:4px;
+}
+
+
+/* Div jogo */
+
+#game{
+  display: flex;
+}
+#side{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Tabuleiro */
+
+#divTab{
+  position: relative;
+  font-size:60px;
+  padding-right:48px;
+}
+#tabuleiro{
+  border-collapse: collapse;
+}
+.tile{
+  width:1em;
+  height:1em;
+  position: relative;
+}
+#tabBody>:nth-child(odd)>.tile:nth-child(odd),#tabBody>:nth-child(even)>.tile:nth-child(even){
+  background-color: #f0d9b5;
+}
+#tabBody>:nth-child(odd)>.tile:nth-child(even),#tabBody>:nth-child(even)>.tile:nth-child(odd){
+  background-color: #b58863;
+}
+
+
+/* Coordenadas */
+
+.coord{
+  font-size:16px;
+}
+.num{
+  width:16px;
+  text-align: right;
+}
+.letra{
+  height:24px;
+  text-align:center;
+  vertical-align:bottom;
+}
+
+
+/* Peças */
+
+#imgs{
+  --tempoTrans:200ms;
+  --modoTrans:cubic-bezier(.25,0,.75,1);
+}
+.peca{
+  position: absolute;
+  width:1em;
+  height:1em;
+  transition:top var(--tempoTrans) var(--modoTrans),left var(--tempoTrans) var(--modoTrans);
+}
+.vezBranco .preto,.vezPreto .branco{
+  pointer-events: none;
+}
+.vezBranco .branco,.vezPreto .preto{
+  cursor: pointer;
+}
+.podeMover{
+  cursor: pointer;
+}
+.podeMover::before,.selecionada::before,.ultima::before{
+  content: "";
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+.podeMover::before{
+  background-color: rgba(0,255,0,0.2);
+}
+.selecionada::before{
+  background-color: rgba(255,0,0,0.2);
+}
+.ultima::before{
+  background-color: rgba(255,255,0,0.2);
+}
+
+
+/* Jogadas */
+
+.emExibicao{
+  color:red;
+  pointer-events: none;
+}
+#jogadas{
+  list-style: none;
+  line-height:1.4em;
+  height:14em;
+  width:10em;
+  overflow-y:auto;
+  border:1px solid #9f9f9f;
+  margin-bottom:12px;
+}
+#jogadas>li>:not(.emExibicao){
+  cursor: pointer;
+}
+#jogadas>li{
+  padding: 0px 3px;
+}
+#jogadas>li:nth-child(even){
+  background-color: #efefef;
+}
+#jogadas img{
+  margin-right:2px;
+  width:20px;
+  vertical-align: middle;
+}
+.ml2{
+  margin-left: 2px;
+}
+
+
+/* Modal */
+
+.modal{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  --tempoTrans:100ms;
+  transition: opacity var(--tempoTrans) linear,visibility var(--tempoTrans) linear;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.5);
+}
+.modal>*{
+  background-color: white;
+  padding:16px 22px;
+}
+.modal:not(.mostrando){
+  visibility: hidden;
+  opacity: 0;
+}
+
+
+/* Promoção */
+
+#promocao h2{
+  margin-bottom:8px;
+  text-align: center;
+}
+#divBotoesProm>:not(:last-child){
+  margin-right:4px;
+}
+#divBotoesProm{
+  display: flex;
+}
+#divBotoesProm>*{
+  cursor: pointer;
+}
+
+
+/* Seleção */
+
+#selecao{
+  width:200px;
+  padding-right:48px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Informações durante o jogo */
+
+#info h3{
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+#info p{
+  font-size: 14px;
+}
+#info{
+  position: fixed;
+  padding: 8px 11px;
+  background-color: rgba(239, 236, 198,0.9);
+  width:250px;
+  border: 1px solid #a3a382;
+  pointer-events: none;
+}
+
+
+/* Tempos */
+
+#tempos{
+  margin: 48px 48px 48px 0;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  position: relative;
+  text-align: center;
+}
+#tempos h3{
+  font-size: 16px;
+  margin-bottom:16px;
+}
+.clock{
+  font-family: monospace;
+  font-size: 24px;
+  display: inline-flex;
+  background-color: #dfdfdf;
+  border: 1px solid #9f9f9f;
+  padding: 0 8px;
+}
+.vezPreto .player:first-of-type .clock,.vezBranco .player:last-of-type .clock{
+  color:#7f7f7f;
+}
+.elo{
+  position: absolute;
+  right:0;
+  top:0;
+  color:#7f7f7f;
+}
+.elo+h3{
+  margin-right: 60px;
+}

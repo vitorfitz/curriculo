@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Xadrez 2.0</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div id="pregame">
+      <ul id="loja"></ul>
+      <div id="preside">
+        <h2 id="monih2">R$ <span id="moni"></span></h2>
+        <div id="seuExercito" class="exercito">
+          <h2>Seu exército</h2>
+          <p>Clique em uma peça abaixo para vendê-la.</p>
+          <div id="imgsExercito" class="imgsExercito"></div>
+        </div>
+        <div>
+          <button id="exePadrao">Exército padrão</button>
+          <button id="exeAleat">Exército aleatório</button>
+        </div>
+        <div>
+          <button id="confirm">Confirmar</button>
+        </div>
+      </div>
+    </div>
+    <div id="game" class="oculto">
+      <div id="selecao" class="exercito">
+        <h2>Seu exército</h2>
+        <p>Clique em uma peça abaixo e depois no tabuleiro para posicioná-la.</p>
+        <div id="imgsSelecaoBranco" class="imgsExercito"></div>
+        <div id="imgsSelecaoPreto" class="imgsExercito"></div>
+      </div>
+      <div id="tempos" class="oculto">
+        <div class="player">
+          <h3>Você</h3>
+          <div class="clock">
+            <span class="m">vc nao</span>:<span class="s">deve</span>
+          </div>
+        </div>
+        <div class="player">
+          <span class="elo">1900</span>
+          <h3>Outro</h3>
+          <div class="clock">
+            <span class="m">ver</span>:<span class="s">isso</span>
+          </div>
+        </div>
+      </div>
+      <div id="divTab">
+        <table id="tabuleiro">
+          <tbody id="tabBody"><tr><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="coord num">8</td></tr><tr><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="coord num">7</td></tr><tr><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="coord num">6</td></tr><tr><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="coord num">5</td></tr><tr><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="coord num">4</td></tr><tr><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="coord num">3</td></tr><tr><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="coord num">2</td></tr><tr><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="tile"></td><td class="coord num">1</td></tr><tr><td class="coord letra">a</td><td class="coord letra">b</td><td class="coord letra">c</td><td class="coord letra">d</td><td class="coord letra">e</td><td class="coord letra">f</td><td class="coord letra">g</td><td class="coord letra">h</td></tr></tbody>
+        </table>
+        <div id="imgs"></div>
+        <div id="info" class="oculto">
+          <h3 id="nomeInfo"></h3>
+          <p id="descInfo"></p>
+        </div>
+      </div>
+      <div id="side">
+        <ol id="jogadas"></ol>
+        <button id="undo">Voltar jogada</button>
+        <button id="empate">Reivindicar empate</button>
+        <button id="stockshit">Jogada do</button>
+      </div>
+      <div class="modal" id="promocao">
+        <section>
+          <h2>Promoção</h2>
+          <div id="divBotoesProm"></div>
+        </section>
+      </div>
+    </div>
+    <script src="index5.js" charset="utf-8"></script>
+  </body>
+</html>
