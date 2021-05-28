@@ -1,0 +1,614 @@
+/* CSS do jogo */
+
+
+.pecas{
+  position: absolute;
+  top:-17.8%;
+  left:0;
+  right:0;
+  bottom:0;
+}
+.peca{
+  border-radius: 50%;
+  border-width: 0;
+  width: 1em;
+  height:1em;
+  position: absolute;
+  top:0;
+}
+.tabuleiro{
+  z-index: 67890 !important;
+  position: relative;
+}
+.pecazul{
+  background-color: #11e;
+}
+.pecaverm{
+  background-color: #e11;
+}
+.ganhada::before{
+  position: absolute;
+  content: "";
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 12345 !important;
+  background-color: #1e1;
+}
+
+.numeros{
+  display:flex;
+  justify-content: center;
+  line-height: 0;
+  position: relative;
+  margin-top: 1.25em;
+}
+.numeros>div>div{
+  border-radius: 50%;
+  border: 0.1em dashed rgb(255, 191, 0);
+  margin-top: -0.1em;
+  margin-bottom: -0.1em;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  z-index: 1;
+  cursor: pointer;
+}
+.numeros kbd{
+  font-family: sans-serif;
+  background-color: #dfdfdf;
+  display: inline-block;
+  width:1.15em;
+  height:1.15em;
+  vertical-align: middle;
+  line-height: 1.15em;
+
+  outline: 0.05em solid #9f9f9f;
+  border-style: solid;
+  border-color: #bfbfbf;
+  border-right-width: 0.1em;
+  border-bottom-width: 0.1em;
+  border-top-width: 0;
+  border-left-width: 0;
+
+  position: absolute;
+  top:0;
+  bottom:0.1em;
+  left:0.1em;
+  right:0;
+  margin: auto;
+}
+
+h3,h4{
+  font-family: sans-serif;
+  font-size: 1em;
+  margin:0;
+}
+#body2 h3{
+  text-align: center;
+}
+#body2 h4{
+  text-align: left;
+}
+
+.jogo{
+  position:relative;
+  display: inline-block;
+}
+#body2 main{
+  position: relative;
+  border: 0 solid rgba(0,0,0,0);
+  line-height: 0;
+}
+:not(.soquenao)>.vert{
+  position: absolute;
+  top:0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 0 !important;
+}
+.vert>*>:not(:first-child){
+  margin-top:1em;
+}
+.vert section>:not(:first-child){
+  margin-top: 0.5em;
+}
+.vert{
+  width:13em;
+  line-height: normal;
+}
+
+.tempos>*{
+  display: inline-block;
+}
+.forca-dos-tempos div{
+  padding-left: 0.25em;
+  font-weight: bold;
+}
+
+.botoes{
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.botoes .botaoJogo{
+  margin-left: 0.33em;
+  margin-right: 0.33em;
+}
+.botaoJogo{
+  position: relative;
+}
+#balao{
+  position: fixed;
+  height:auto;
+  width: 8em;
+  padding:0.25em 0.5em;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: #3f7f5f;
+  color:#ddffff;
+  z-index: 2;
+  pointer-events: none;
+}
+#balao::after{
+  content: "";
+  position: absolute;
+  left:0;
+  right: 0;
+  bottom:-1.4em;
+  margin: 0 auto;
+  pointer-events: none;
+
+  width:0;
+  height:0;
+  border-right: 0.6em solid transparent;
+  border-left: 0.6em solid transparent;
+  border-bottom: 0.7em solid transparent;
+  border-top: 0.7em solid #3f7f5f;
+  z-index: 1;
+}
+
+.xadrez>*{
+  padding: 0 0.25em;
+  line-height: 1.25em;
+}
+.xadrez>:nth-child(odd){
+  background-color: rgba(255,255,255,0.25);
+}
+.xadrez>:nth-child(even){
+  background-color: rgba(0,0,0,0.25);
+}
+.espacado{
+  line-height: 1.25;
+}
+
+.log{
+  margin-top: 1.5em;
+  background-color: white;
+  border: 1px solid #3f3f3f;
+  overflow-y: auto;
+  min-width: 6em;
+  max-height: 10.662em;
+  box-sizing: content-box;
+  padding: 0;
+  margin:0 auto;
+  display: inline-block;
+  user-select: none;
+}
+.log li{
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+}
+.log span{
+  user-select: text;
+  white-space: nowrap;
+}
+
+.azul{
+  color:#0000ff;
+}
+.vermelho{
+  color:#ff0000;
+}
+.amarelo{
+  color:#ffff00;
+}
+
+.tempo-expirado{
+  color:#00ff00 !important;
+}
+
+.botaoJogo{
+  border-radius: 50%;
+  width:1.4em;
+  height:1.4em;
+  text-align: center;
+  line-height: 1.4em;
+  padding: 0;
+  border: 0.07em solid;
+  font-size: 1.5em;
+  display: inline-block;
+}
+.botaoJogo:not(.off):hover{
+  cursor: pointer;
+}
+.pause:not(.off){
+  background-color: rgb(255, 127, 127);
+  color: rgb(127, 0,0);
+  border-color: rgb(191, 63,63);
+}
+.off{
+  background-color: rgb(191, 191, 191);
+  color: rgb(95,95,95);
+  border-color: rgb(143,143,143);
+}
+.play{
+  background-color: rgb(127, 255, 127);
+  color: rgb(0, 127,0);
+  border-color: rgb(63, 191,63);
+}
+.home{
+  background-color: rgb(255, 127, 255);
+  color: rgb(127, 0,127);
+  border-color: rgb(191, 63,191);
+  font-weight: 900;
+}
+.reset{
+  background-color: rgb(127, 127, 255);
+  color: rgb(0, 0,127);
+  border-color: rgb(63, 63,191);
+  font-weight: 900;
+}
+.undo{
+  background-color: rgb(127, 255, 255);
+  color: rgb(0,127,127);
+  border-color: rgb(63,191,191);
+  font-weight: 900;
+}
+.pause::after{
+  content: "❚❚";
+}
+.play::after{
+  content: "►";
+  padding-left: 0.14em;
+}
+.home::after{
+  content: "↵";
+  padding-right: 0.07em;
+  font-size: 1.5em;
+  position: absolute;
+  display: block;
+  left:0;
+  right:0;
+  line-height: 1.1em;
+}
+.reset::after{
+  content:"↻";
+  position: absolute;
+  font-weight: 900;
+  font-size: 1.1em;
+  line-height: 1.17em;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+.undo::before{
+  content:"↻";
+  position: absolute;
+  font-weight: 900;
+  font-size: 0.96em;
+  left:0;
+  right:0.3em;
+  bottom:0.15em;
+}
+.undo::after{
+  content:"1";
+  position: absolute;
+  font-weight: 900;
+  font-size: 0.48em;
+  left:0;
+  right:-1.8em;
+  bottom:-0.3em;
+}
+.ficsu{
+  position: fixed;
+}
+
+.soquenao{
+  position: absolute;
+  top:105%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  width:100%;
+}
+.soquenao .vert{
+  position: static;
+  display: block;
+}
+.desnecessario:not(.soquenao){
+    margin-bottom: 0 !important;
+}
+
+
+
+/* CSS do Index */
+
+
+.main-menu>:not(h2){
+  font-size: 1.5em;
+  border: 2px solid rgba(239,191,63,0.5);
+  display: block;
+  padding: 0.333em 0.5em;
+  border-radius: 0.5em;
+  background-color: rgba(239,191,63,0.25);
+  text-decoration: none;
+  color: rgba(95, 127, 63,1);
+  cursor: pointer;
+}
+.main-menu>:not(:first-child){
+  margin-top: 1em;
+}
+.main-menu>:not(h2):hover{
+  background-color: rgba(255,191,63,0.5);
+}
+.main-menu h2{
+  margin-top: 0;
+  font-size: 2em;
+  color: rgba(95, 127, 63,1);
+  margin:0;
+}
+
+.esq{
+  padding-left: 4em;
+  overflow-y: auto;
+  height:100%;
+  position: relative;
+}
+.esq::before,.esq::after{
+  content:"";
+  position: sticky;
+  left: 0;
+  right:0;
+  display: block;
+  height:2em;
+  z-index: 12345 !important;
+  border:0;
+  margin:0;
+}
+.esq::before{
+  top:0;
+  background-image: linear-gradient(to bottom,rgb(127,255,191),transparent);
+}
+.esq::after{
+  bottom:0;
+  background-image: linear-gradient(to top,rgb(127,255,191),transparent);
+}
+
+#body1 main{
+  border-bottom: 2px dashed rgb(111, 127, 95);
+}
+#body1 main>*{
+  box-sizing: border-box;
+}
+h1{
+  letter-spacing: 1px;
+}
+
+@media screen and (min-aspect-ratio: 5/4){
+  .dir{
+    border-left: 2px dashed rgb(111, 127, 95);
+    padding-right: 4em;
+    padding-left: 2em;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height:100%;
+  }
+  .esq{
+    padding-right: 2em;
+  }
+  #body1 main{
+    font-size: 2.5vh;
+    height:80vh;
+  }
+  #body1 h1{
+    font-size: 7.5vh;
+    height: 10vh;
+  }
+}
+@media not screen and (min-aspect-ratio: 5/4){
+  .dir{
+    border-bottom: 2px dashed rgb(111, 127, 95);
+    padding: 2em 0;
+  }
+  .main-menu{
+    display: inline-block;
+  }
+  .esq{
+    padding-right: 4em;
+  }
+  #body1 main{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.667vh;
+    height:83.333vh;
+  }
+  #body1 h1{
+    font-size: 5vh;
+    height: 6.667vh;
+  }
+}
+
+#body1 h1{
+  border-bottom: 2px dashed rgb(111, 127, 95);
+  margin:0;
+  box-sizing: border-box;
+}
+h1,h2{
+  line-height: 1em;
+}
+
+#body1 .texto article>:first-child{
+  margin-top: 0;
+}
+#body1 .texto article>:last-child{
+  margin-bottom:0;
+}
+#body1 .texto h2{
+  margin-top: 1.125em;
+  margin-bottom: 0.75em;
+  font-size: 1.333em;
+}
+#body1 .texto li:not(:last-child){
+  margin-bottom: 0.667em;
+}
+#body1 .texto aside{
+  font-size: 0.87em;
+  margin-top: 0.383em;
+  padding-left: 1.15em;
+  font-style: italic;
+}
+input[type="number"],select{
+  font-size: 0.87em;
+  box-sizing: content-box;
+  border: 1px solid #3f3f3f;
+  font-family: sans-serif;
+  height:1.25em;
+  line-height: 1.25em;
+}
+input[type="number"]{
+  padding-right: 0;
+  padding-left: 0.25em;
+  padding-top: 0;
+  padding-bottom: 0;
+  width:3em;
+}
+input[type="number"][disabled],select[disabled]{
+  background-color: #dfdfdf;
+  color:#7f7f7f;
+}
+select{
+  padding:0;
+}
+option{
+  height:100%;
+  line-height: 100%;
+  min-height: 100%;
+  padding:0 0.25em;
+}
+input[type="checkbox"]{
+  margin:0;
+  font-size: 2em;
+  position: relative;
+  top:0.0383em;
+}
+
+.anunciaVencedor{
+  background-color: rgba(255,255,255,0.5);
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index: 1234567890 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.anunciaVencedor h1{
+  margin-top: 0;
+  margin-bottom:1em;
+}
+h1.vermelho{
+  -webkit-text-stroke:1px rgb(191, 63, 63);
+}
+h1.azul{
+  -webkit-text-stroke:1px rgb(63, 63, 191);
+}
+h1.amarelo{
+  -webkit-text-stroke:1px rgb(191, 191, 63);
+}
+.span5{
+  font-style: italic;
+}
+.span3-33{
+  margin-left: 0.5em;
+  top:0.1em;
+}
+
+@media screen and (min-aspect-ratio: 5/4){
+  .anunciaVencedor h1{
+    font-size: 7.5vh;
+  }
+  .anunciaVencedor .span5{
+    font-size: 5vh;
+  }
+  .anunciaVencedor .span3-33{
+    font-size: 3.33vh;
+  }
+}
+@media not screen and (min-aspect-ratio: 5/4){
+  .anunciaVencedor h1{
+    font-size: 5vh;
+  }
+  .anunciaVencedor .span5{
+    font-size: 3.33vh;
+  }
+  .anunciaVencedor .span3-33{
+    font-size: 2.22vh;
+  }
+}
+
+
+
+/* CSS Geral */
+
+
+body{
+  margin:0;
+  text-align: center;
+  background-color: rgb(127, 255, 191);
+}
+#body1{
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  height:90vh;
+}
+#body2{
+  height:100vh;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.texto{
+  line-height: 1.15em;
+  font-family: sans-serif;
+  text-align: justify;
+}
+.chamativo{
+  color: rgb(255, 191, 0);
+  -webkit-text-stroke: 1px rgb(191, 159, 0);
+}
+.texto ul, .texto ol{
+  padding-left: 2em;
+}
+.turvo{
+  padding:1.5em;
+  border-radius: 1.5em;
+  background-color: rgba(0, 159, 127,0.25);
+}
+.semargem{
+  margin: 0 !important;
+}
+.oculto{
+  display: none !important;
+}

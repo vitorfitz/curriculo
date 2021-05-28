@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Connect Four</title>
+  </head>
+  <body>
+    <div id="body1" class="body">
+      <h1 class="chamativo">Connect Four</h1>
+      <main>
+        <div class="dir">
+          <nav class="main-menu turvo">
+            <h2>Jogar</h2>
+            <span class="jog2">2 Jogadores</span>
+            <span class="solo">Contra o Computador</span>
+            <span class="qmuda">Configurações</span>
+          </nav>
+        </div>
+        <div class="texto esq">
+          <article class="info">
+            <h2>Regras</h2>
+            <p>
+              Connect Four (no Brasil conhecido como Lig 4) é jogado por duas pessoas em um tabuleiro retangular colocado na vertical, tradicionalmente com 6 linhas e 7 colunas.
+              Cada jogador, em seu turno, coloca uma peça de sua cor em qualquer uma das colunas que não estão cheias ainda, e depois passa a vez para o outro.
+              Se sua jogada resultar na formação de uma sequência de 4 peças de sua cor, seja na vertical, horizontal ou diagonal, ele ganha o jogo.
+            </p>
+            <h2>Controles</h2>
+            <p>
+              Nesse aplicativo, será apresentado um tabuleiro de Lig 4 com botões numerados 1 a 7 acima de cada coluna, indicando sua posição.
+              Para o jogador do turno atual colocar uma peça em qualquer coluna, basta apertar seu número correspondente no teclado ou clicar em seu botão.
+              Há botões que podem ser clicados para parar ou continuar a contagem do tempo, voltar 1 jogada ou recomeçar a partida inteira.
+            </p>
+            <h2>Configurações</h2>
+            <p>
+              Para estabelecer um tempo limite para cada jogador (o qual se acabar resulta em sua derrota), ou outras regras, como sobre quem será o novo jogador
+              inicial após o fim de uma rodada, ou quantas rodadas ou vitórias serão necessárias para o encerramento da partida, clique em Configurações no menu ao lado.
+            </p>
+            <p>
+              Também é possível alterar configurações do jogador automático, o que só será relevante se tiver sido escolhida a opção de jogar contra ele.
+              Na segunda seção do menu de Configurações, altere a dificuldade ou a cor usada pelo bot.
+            </p>
+          </article>
+          <article class="config oculto">
+            <h2>Customizar Regras</h2>
+            <ul>
+              <li>
+                <strong>Tempo:</strong>
+                <input type="number" value="180" min="10" max="600" class="tempo" disabled>
+                segundos
+                <aside>
+                  <input type="checkbox" class="tempo-check">
+                  Habilitar tempo
+                </aside>
+              </li>
+              <li>
+                <strong>Quem começa na 1ª rodada:</strong>
+                <select class="qc1">
+                  <option>Aleatório</option>
+                  <option>Azul</option>
+                  <option>Vermelho</option>
+                </select>
+              </li>
+              <li>
+                <strong>Quem começa a partir da 2ª rodada:</strong>
+                <select class="qc2">
+                  <option>Quem jogou em 2º</option>
+                  <option>Quem ganhou</option>
+                  <option>Quem perdeu</option>
+                  <option>Aleatório</option>
+                </select>
+              </li>
+              <li>
+                <strong>Fim de jogo: </strong>
+                <input type="number" value="3" min="1" max="10" class="fim-pts">
+                <select class="fim-modo">
+                  <option>Partidas</option>
+                  <option>Vitórias</option>
+                </select>
+                <aside>
+                  <input type="checkbox" class="fim-check">
+                  Não acabar nunca
+                </aside>
+              </li>
+            </ul>
+            <h2>Configurações do Bot</h2>
+            <ul>
+              <li>
+                <strong>Cor do Bot:</strong>
+                <select class="corBot">
+                  <option>Azul</option>
+                  <option>Vermelho</option>
+                </select>
+              </li>
+              <li>
+                <strong>Dificuldade:</strong>
+                <select class="difBot">
+                  <option>Fácil</option>
+                  <option selected>Médio</option>
+                  <option>Difícil</option>
+                  <option>Expert</option>
+                </select>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </main>
+    </div>
+    <main id="body2" class="body oculto">
+      <div class="numeros"></div>
+      <span class="botaoJogo home ficsu"></span>
+      <div class="jogo">
+        <img class="tabuleiro" src="soutransparente.png" alt="deu pau ;-;">
+        <div class="pecas"></div>
+        <div class="desnecessario">
+          <div class="vert div-do-log">
+            <div class="turvo">
+              <h3>Registro de Jogadas</h3>
+              <ol class="log texto xadrez"></ol>
+            </div>
+          </div>
+          <div class="vert div-info">
+            <div class="turvo texto">
+              <h3 class="vez">Vez do Vermelho!</h3>
+              <section>
+                <h4>Tempo restante: </h4>
+                <div class="tempos">
+                  <ul class="semargem espacado">
+                    <li>Azul: </li>
+                    <li>Vermelho: </li>
+                  </ul><div class="forca-dos-tempos">
+                    <div class="azul">0:43</div>
+                    <div class="vermelho">1:07</div>
+                  </div>
+                </div>
+              </section>
+              <section>
+                <h4 class="placar">Placar: <span class="azul">0</span> x <span class="vermelho">0</span></h4>
+                <p class="fim">(Fim: <span>10 pontos</span>)</p>
+              </section>
+              <div class="botoes">
+                <div id="balao" class="oculto"></div>
+                <span class="botaoJogo mutavel"></span>
+                <span class="reset botaoJogo"></span>
+                <span class="undo botaoJogo"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="anunciaVencedor oculto">
+        <h1 class="chamativo">Fim de Jogo</h1>
+        <h1 class="mudaDeCor">Cor X ganhou!</h1>
+        <div class="espacado">
+          <span class="span5">Voltar</span><span class="botaoJogo home span3-33"></span>
+        </div>
+        <div class="espacado">
+          <span class="span5">Recomeçar</span><span class="botaoJogo reset span3-33"></span>
+        </div>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
